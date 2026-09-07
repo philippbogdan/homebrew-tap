@@ -6,12 +6,13 @@ class Amail < Formula
   url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "1cc652e647a81a129d04bffb0590539f2cdf57c93df56dc54e94312c20d99c79"
   license "MIT"
+  revision 1
 
   depends_on :macos
   depends_on "python@3.14"
 
   def install
-    virtualenv_create(libexec, "python3.14")
+    virtualenv_create(libexec, Formula["python@3.14"].opt_bin/"python3.14", system_site_packages: false)
     app = libexec/"app"
     app.install %w[
       amail cli.py configuration.py local_store.py body_index.py
