@@ -1,0 +1,24 @@
+name: Homebrew package
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Add the exact checked-out tap
+        run: brew tap philippbogdan/tap "$GITHUB_WORKSPACE"
+      - name: Trust only the tested formula when supported
+        run: |
+          if brew help trust >/dev/null 2>&1; then
+            brew trust --formula philippbogdan/tap/amail
+          fi
+      - name: Install the release and its dependencies
+        run: brew install --build-from-source philippbogdan/tap/amail
+      - name: Test without mail accounts
+        run: brew test philippbogdan/tap/amail
