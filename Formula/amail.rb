@@ -12,7 +12,7 @@ class Amail < Formula
   depends_on "python@3.14"
 
   def install
-    virtualenv_create(libexec, Formula["python@3.14"].opt_bin/"python3.14", system_site_packages: false)
+    virtualenv_create(libexec, formula_opt_bin("python@3.14")/"python3.14", system_site_packages: false)
     app = libexec/"app"
     app.install %w[
       amail cli.py configuration.py local_store.py body_index.py
