@@ -3,10 +3,9 @@ class Amail < Formula
 
   desc "Local email CLI for agents using Gmail and Exchange on macOS"
   homepage "https://github.com/philippbogdan/amail"
-  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "1cc652e647a81a129d04bffb0590539f2cdf57c93df56dc54e94312c20d99c79"
+  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "6da5419419f4f2d76a31125fcb40d5342d5e8cc4efcb71efdfe263ce2007f2c2"
   license "MIT"
-  revision 1
 
   depends_on :macos
   depends_on "python@3.14"
@@ -17,7 +16,7 @@ class Amail < Formula
     app.install %w[
       amail cli.py configuration.py local_store.py body_index.py
       mail_sender.py gmail_backend.py mail_operations.py mail_operations.jxa
-      send.applescript workflows.py policy.py feedback.py usage.py
+      send.applescript bulk_mark.py workflows.py policy.py feedback.py usage.py
     ]
     app.install "README.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "docs", "skills"
     inreplace app/"amail", "#!/usr/bin/env python3", "#!#{libexec}/bin/python"
@@ -37,6 +36,8 @@ class Amail < Formula
     ENV["AMAIL_STATE_DIR"] = (testpath/"state").to_s
     ENV["AMAIL_CONFIG"] = (testpath/"config.json").to_s
     assert_match version.to_s, shell_output("#{bin}/amail --version")
+    assert_match "JSONL", shell_output("#{bin}/amail schema batch")
+    assert_match "mark-bulk", shell_output("#{bin}/amail --help")
     assert_match "setup", shell_output("#{bin}/amail --help")
     assert_match "amail setup", shell_output("#{bin}/amail accounts 2>&1", 1)
   end
