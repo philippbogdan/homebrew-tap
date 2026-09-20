@@ -3,8 +3,8 @@ class Amail < Formula
 
   desc "Local email CLI for agents using Gmail and Exchange on macOS"
   homepage "https://github.com/philippbogdan/amail"
-  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "d1887841aa9770d49a611753774385795fc9798f9e1feaffe05089f6f7723089"
+  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "bff00f4271c6690887efae14cc03e6cab9e9d0740197fbc778b40ac50629c1bc"
   license "MIT"
 
   depends_on :macos
@@ -16,7 +16,8 @@ class Amail < Formula
     app.install %w[
       amail cli.py configuration.py local_store.py body_index.py
       mail_sender.py gmail_backend.py mail_operations.py mail_operations.jxa
-      send.applescript bulk_mark.py workflows.py policy.py feedback.py usage.py
+      send.applescript native_editor.py native_transport.py
+      bulk_mark.py workflows.py policy.py feedback.py usage.py
     ]
     app.install "README.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "docs", "skills"
     inreplace app/"amail", "#!/usr/bin/env python3", "#!#{libexec}/bin/python"
@@ -27,6 +28,7 @@ class Amail < Formula
     <<~EOS
       Run amail setup to discover and select your Apple Mail accounts.
       Gmail API access also needs gog and your own Google OAuth client.
+      Native sending needs Mail Automation and host Accessibility permission.
       Configuration and credentials stay in your private user storage.
       See https://github.com/philippbogdan/amail/blob/main/docs/SETUP.md
     EOS
