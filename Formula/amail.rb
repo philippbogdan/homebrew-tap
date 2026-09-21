@@ -3,8 +3,8 @@ class Amail < Formula
 
   desc "Local email CLI for agents using Gmail and Exchange on macOS"
   homepage "https://github.com/philippbogdan/amail"
-  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.3.1.tar.gz"
-  sha256 "25a2974b4f84aff78c8204e12fef539e4529780f559ba92e67220d2b253d81ab"
+  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "bb46063fd6502cad3df731ce1ecd145703b453d6eb34727556307b1323d316b0"
   license "MIT"
 
   depends_on :macos
@@ -27,8 +27,9 @@ class Amail < Formula
   def caveats
     <<~EOS
       Run amail setup to discover and select your Apple Mail accounts.
-      Gmail API access also needs gog and your own Google OAuth client.
-      Native sending needs Mail Automation and host Accessibility permission.
+      Sending needs Mail Automation and host Accessibility permission; every
+      account sends through Apple Mail. Optional live Gmail reads need gog and
+      your own Google OAuth client.
       Configuration and credentials stay in your private user storage.
       See https://github.com/philippbogdan/amail/blob/main/docs/SETUP.md
     EOS
