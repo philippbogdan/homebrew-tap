@@ -3,8 +3,8 @@ class Amail < Formula
 
   desc "Local email CLI for agents using Gmail and Exchange on macOS"
   homepage "https://github.com/philippbogdan/amail"
-  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "bb46063fd6502cad3df731ce1ecd145703b453d6eb34727556307b1323d316b0"
+  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "4c79a70edda244546c15515f512e3fe06c3634952d89b8b7e06dedfc5f84ddf4"
   license "MIT"
 
   depends_on :macos
