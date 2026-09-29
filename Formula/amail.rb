@@ -3,8 +3,8 @@ class Amail < Formula
 
   desc "Local email CLI for agents using Gmail and Exchange on macOS"
   homepage "https://github.com/philippbogdan/amail"
-  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.4.3.tar.gz"
-  sha256 "070b6cf8b941b4ed3a8e5d4a77bebd3c6ab9185a1410ed21f00624475f26beb1"
+  url "https://github.com/philippbogdan/amail/archive/refs/tags/v0.4.4.tar.gz"
+  sha256 "37a22b090ab3a7b25a483e9d8f4fbac6f90efed052ee2223721baa2716c73e6e"
   license "MIT"
 
   depends_on :macos
@@ -16,7 +16,7 @@ class Amail < Formula
     app.install %w[
       amail cli.py configuration.py local_store.py body_index.py
       mail_sender.py gmail_backend.py mail_operations.py mail_operations.jxa
-      send.applescript native_editor.py native_transport.py
+      send.applescript native_editor.py native_transport.py mail_health.py
       bulk_mark.py workflows.py policy.py feedback.py usage.py
     ]
     app.install "README.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "docs", "skills"
